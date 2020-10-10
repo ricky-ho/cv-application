@@ -1,73 +1,55 @@
-import React from "react";
-import "./Education.css";
+import React, { useState } from "react";
 
-class Education extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      school: "",
-      degree: "",
-      date: "",
-    };
-  }
+const Education = (props) => {
+  const { state } = props;
+  const [isEditting, setisEditting] = useState(false);
 
-  handleChange = (e) => {
-    const value = e.target.value;
-    this.setState({
-      [e.target.name]: value,
-    });
-  };
-
-  handleSubmit = (e) => {
-    console.log(this.state);
-    e.preventDefault();
-  };
-
-  render() {
-    const { school, degree, date } = this.state;
-
-    return (
-      <div className="section-container">
-        <h1 className="section-header">Education</h1>
-        <form className="form education-form">
-          <div className="form-row">
-            <label>
-              School:
-              <input
-                type="text"
-                name="school"
-                value={school}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              Degree:
-              <input
-                type="text"
-                name="degree"
-                value={degree}
-                onChange={this.handleChange}
-              />
-            </label>
+  return (
+    <section id="education" className="section-container">
+      <h2 className="section-header">Education</h2>
+      <form className="form flex-col" onSubmit={(e) => props.handleSubmit(e)}>
+        <div className="form-row flex">
+          <div className="form-row-item flex-col">
+            <label htmlFor="school">School:</label>
+            <input
+              type="text"
+              id="school"
+              name="school"
+              placeholder="Enter school name"
+              value={state.school}
+              onChange={(e) => props.handleChange(e)}
+            />
           </div>
-          <div className="form-row">
-            <label>
-              Date Awarded:
-              <input
-                type="date"
-                name="date"
-                value={date}
-                onChange={this.handleChange}
-              />
-            </label>
+          <div className="form-row-item flex-col">
+            <label htmlFor="degree">Degree:</label>
+            <input
+              type="text"
+              id="degree"
+              name="degree"
+              placeholder="Enter degree"
+              value={state.degree}
+              onChange={(e) => props.handleChange(e)}
+            />
           </div>
-          <div className="form-row">
-            <input type="submit" value="Submit" />
+        </div>
+        <div className="form-row flex">
+          <div className="form-row-item flex-col">
+            <label htmlFor="degreeDate">Date Awarded:</label>
+            <input
+              type="date"
+              id="degreeDate"
+              name="date"
+              value={state.date}
+              onChange={(e) => props.handleChange(e)}
+            />
           </div>
-        </form>
-      </div>
-    );
-  }
-}
+        </div>
+        <div className="form-row flex center">
+          <input type="submit" className="submit" value="Submit" />
+        </div>
+      </form>
+    </section>
+  );
+};
 
 export default Education;

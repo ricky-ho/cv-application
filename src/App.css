@@ -4,10 +4,7 @@
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
   place-items: center;
-  justify-content: center;
   font-family: sans-serif;
   height: 100vh;
   width: 100%;
@@ -15,19 +12,63 @@
 
 .section-container {
   margin: 10px;
-  height: 200px;
   width: 70%;
-  border: 1px solid;
+  min-width: 450px;
+  border-radius: 5px;
+  background: #6aa6f5;
 }
 
 .section-header {
-  padding-left: 10px;
-  padding-top: 5px;
+  padding-left: 15px;
+  padding-top: 10px;
+  color: #fff;
 }
 
 .form {
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.form-row-item {
+  margin: 5px 10px;
+  width: 100%;
+}
+
+.flex-col {
   display: flex;
   flex-direction: column;
-  margin: 10px;
-  border: 1px solid;
+}
+
+.flex {
+  display: flex;
+}
+
+.center {
+  justify-content: center;
+}
+
+.submit {
+  padding: 5px;
+  margin: 5px;
+  color: #fff;
+  background: #6aa6f5;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.submit:hover {
+  cursor: pointer;
+  background: #0a68d3;
+}
+
+label {
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+input {
+  padding: 3px;
 }

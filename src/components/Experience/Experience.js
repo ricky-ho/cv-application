@@ -1,96 +1,78 @@
-import React from "react";
-import "./Experience.css";
+import React, { useState } from "react";
 
-class Experience extends React.Component {
-  constructor(props) {
-    super(props);
+const Experience = (props) => {
+  const { state } = props;
+  const [isEditting, setisEditting] = useState(false);
 
-    this.state = {
-      company: "",
-      position: "",
-      startDate: "",
-      endDate: "",
-      description: "",
-    };
-  }
-
-  handleChange = (e) => {
-    const value = e.target.value;
-    this.setState({
-      [e.target.name]: value,
-    });
-  };
-
-  handleSubmit = (e) => {
-    console.log(this.state);
-    e.preventDefault();
-  };
-
-  render() {
-    const { company, position, startDate, endDate, description } = this.state;
-
-    return (
-      <div className="section-container">
-        <h1 className="section-header">Experience</h1>
-        <form className="form experience-form">
-          <div className="form-row">
-            <label>
-              Company:
-              <input
-                type="text"
-                name="company"
-                value={company}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              Position:
-              <input
-                type="text"
-                name="position"
-                value={position}
-                onChange={this.handleChange}
-              />
-            </label>
+  return (
+    <section id="experience" className="section-container">
+      <h2 className="section-header">Experience</h2>
+      <form className="form flex-col" onSubmit={(e) => props.handleSubmit(e)}>
+        <div className="form-row flex">
+          <div className="form-row-item flex-col">
+            <label htmlFor="company">Company:</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              placeholder="Enter company name"
+              value={state.company}
+              onChange={(e) => props.handleChange(e)}
+            />
           </div>
-          <div className="form-row">
-            <label>
-              Start Date:
-              <input
-                type="date"
-                name="startDate"
-                value={startDate}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              End Date:
-              <input
-                type="date"
-                name="endDate"
-                value={endDate}
-                onChange={this.handleChange}
-              />
-            </label>
+          <div className="form-row-item flex-col">
+            <label htmlFor="position">Position Title:</label>
+            <input
+              type="text"
+              id="position"
+              name="position"
+              placeholder="Enter position title"
+              value={state.position}
+              onChange={(e) => props.handleChange(e)}
+            />
           </div>
-          <div className="form-row">
-            <label>
-              Description:
-              <input
-                type="text"
-                name="description"
-                value={description}
-                onChange={this.handleChange}
-              />
-            </label>
+        </div>
+        <div className="form-row flex">
+          <div className="form-row-item flex-col">
+            <label htmlFor="jobStart">Start Date:</label>
+            <input
+              type="date"
+              id="jobStart"
+              name="startDate"
+              value={state.startDate}
+              onChange={(e) => props.handleChange(e)}
+            />
           </div>
-          <div className="form-row">
-            <input type="submit" value="Submit" />
+          <div className="form-row-item flex-col">
+            <label htmlFor="jobEnd">End Date:</label>
+            <input
+              type="date"
+              id="jobEnd"
+              name="endDate"
+              value={state.endDate}
+              onChange={(e) => props.handleChange(e)}
+            />
           </div>
-        </form>
-      </div>
-    );
-  }
-}
+        </div>
+        <div className="form-row flex">
+          <div className="form-row-item flex-col">
+            <label htmlFor="Tasks">Tasks:</label>
+            <input
+              type="text"
+              id="tasks"
+              name="description"
+              value={state.description}
+              placeholder="Enter task"
+              onChange={(e) => props.handleChange(e)}
+            />
+          </div>
+        </div>
+        <div className="form-row flex center">
+          <input type="submit" className="submit" value="Submit" />
+        </div>
+      </form>
+    </section>
+  );
+};
 
 export default Experience;
