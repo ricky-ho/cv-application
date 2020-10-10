@@ -42,7 +42,7 @@
   flex-direction: column;
 }
 
-.flex {
+.form-row {
   display: flex;
 }
 
@@ -50,17 +50,20 @@
   justify-content: center;
 }
 
-.submit {
+.btn {
   padding: 5px;
   margin: 5px;
+  width: 60px;
   color: #fff;
   background: #6aa6f5;
   border: 1px solid white;
   border-radius: 5px;
+  transition: 0.5s;
 }
 
-.submit:hover {
+.btn:hover {
   cursor: pointer;
+  width: 90px;
   background: #0a68d3;
 }
 
@@ -71,4 +74,15 @@ label {
 
 input {
   padding: 3px;
+  color: #646464;
+}
+
+.item-title {
+  font-size: 1.1rem;
+  padding-bottom: 3px;
+}
+
+.item-value {
+  font-size: 1rem;
+  margin-bottom: 5px;
 }

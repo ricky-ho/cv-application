@@ -2,13 +2,22 @@ import React, { useState } from "react";
 
 const Personal = (props) => {
   const { state } = props;
-  const [isEditting, setisEditting] = useState(false);
+  const [isEditting, setisEditting] = useState(true);
 
-  return (
-    <section id="personal" className="section-container">
-      <h2 className="section-header">General Information</h2>
-      <form className="form flex-col" onSubmit={(e) => props.handleSubmit(e)}>
-        <div className="form-row flex">
+  const handleSubmit = (e) => {
+    setisEditting(false);
+    e.preventDefault();
+  };
+
+  const handleEdit = () => {
+    setisEditting(true);
+  };
+
+  let toDisplay;
+  if (isEditting) {
+    toDisplay = (
+      <form className="form flex-col" onSubmit={(e) => handleSubmit(e)}>
+        <div className="form-row">
           <div className="form-row-item flex-col">
             <label htmlFor="firstName">First Name: </label>
             <input
@@ -32,7 +41,7 @@ const Personal = (props) => {
             />
           </div>
         </div>
-        <div className="form-row flex">
+        <div className="form-row">
           <div className="form-row-item flex-col">
             <label htmlFor="email">Email: </label>
             <input
@@ -45,7 +54,7 @@ const Personal = (props) => {
             />
           </div>
         </div>
-        <div className="form-row flex">
+        <div className="form-row">
           <div className="form-row-item flex-col">
             <label htmlFor="phone">Phone: </label>
             <input
@@ -58,10 +67,43 @@ const Personal = (props) => {
             />
           </div>
         </div>
-        <div className="form-row flex center">
-          <input type="submit" className="submit" value="Submit" />
+        <div className="form-row center">
+          <input type="submit" className="btn" value="Submit" />
         </div>
       </form>
+    );
+  } else {
+    toDisplay = (
+      <div className="form flex-col">
+        <div className="form-row-item">
+          <h3 className="item-title">Full Name: </h3>
+          <p className="item-value">{`${state.firstName} ${state.lastName}`}</p>
+        </div>
+        <div className="form-row-item">
+          <h3 className="item-title">Email: </h3>
+          <p className="item-value">{state.email}</p>
+        </div>
+        <div className="form-row-item">
+          <h3 className="item-title">Phone Number: </h3>
+          <p className="item-value">{state.phone}</p>
+        </div>
+
+        <div className="form-row center">
+          <input
+            type="button"
+            className="btn"
+            value="Edit"
+            onClick={() => handleEdit()}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <section id="personal" className="section-container">
+      <h2 className="section-header">General Information</h2>
+      {toDisplay}
     </section>
   );
 };

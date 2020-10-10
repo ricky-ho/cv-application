@@ -4,6 +4,11 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import "./App.css";
 
+/* For Future: 
+  - Add hovering edit display 
+  - Reorganize to reduce repetitive code
+*/
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,12 +20,12 @@ class App extends React.Component {
       phone: "",
       school: "",
       degree: "",
-      date: "",
+      degreeDate: "",
       company: "",
       position: "",
       startDate: "",
       endDate: "",
-      description: "",
+      tasks: "",
     };
   }
 
@@ -29,13 +34,6 @@ class App extends React.Component {
     this.setState({
       [e.target.name]: value,
     });
-  };
-
-  handleSubmit = (e) => {
-    console.log("Submitted");
-    console.log(this.state);
-
-    e.preventDefault();
   };
 
   render() {
