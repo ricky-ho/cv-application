@@ -39,21 +39,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App flex-col">
-        <Personal
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          state={this.state}
-        />
-        <Education
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          state={this.state}
-        />
-        <Experience
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          state={this.state}
-        />
+        <Personal handleChange={this.handleChange} state={this.state} />
+        <Education handleChange={this.handleChange} state={this.state} />
+        <Experience handleChange={this.handleChange} state={this.state} />
       </div>
     );
   }
